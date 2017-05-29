@@ -11,6 +11,7 @@ public class GenericPage extends WebPage {
 	
 	public GenericPage(final PageParameters p) {
 		super(p);
+		
 		add(new Label(CONTENT, "ass"));
 		add(new Label("home", "home"));
 		add(new Link("login") {
