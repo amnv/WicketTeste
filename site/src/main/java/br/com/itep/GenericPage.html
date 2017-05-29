@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="">
+		header {
+			background: black;
+			height: 200px;
+		}
+
+		section {
+			background: red;	
+			height: 500px;	
+		}
+
+		nav {
+			background: yellow;
+			height: 100px;
+		}
+
+		nav {
+			vertical-align: center;
+		}
+		nav ul li {
+			display:  inline;
+			padding: 30px;	
+		}
+
+		nav ul li:hover {
+			background: #f00;
+		}
+		footer {
+			background: green;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<header></header>
+	<nav>
+		<ul>
+			<li wicket:id="home">home</li>
+			<li wicket:id="login">Login</li>
+			<li wicket:id="cadastro">Cadastro</li>
+		</ul>
+		</nav>
+	<section wicket:id="mainScreen"></section>
+	<footer></footer>
+</body>
+</html>
