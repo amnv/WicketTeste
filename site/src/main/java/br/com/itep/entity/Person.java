@@ -2,13 +2,33 @@ package br.com.itep.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+
+@Entity
+@Table(name = "PEOPLE_TABLE")
 public class Person {
 	private String name;
+	private String cpf;
 	private String email;
 	private String password;
 	private Date date;
 
+	
 	public Person() {
+	}
+
+	@Id
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public Person(String name, String email, String password, Date date) {
@@ -42,6 +62,7 @@ public class Person {
 		this.password = password;
 	}
 
+	@Column(name = "DATA_NASCIMENTO")
 	public Date getDate() {
 		return date;
 	}
