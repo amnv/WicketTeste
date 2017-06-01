@@ -19,6 +19,11 @@ public class PersonBean {
 		this.date = date;
 	}
 
+	public boolean checkPassword()
+	{
+		return this.password.equals(this.cPassword);
+	}
+	
 	public String getName() {
 		return name;
 	}

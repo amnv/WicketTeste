@@ -1,9 +1,6 @@
 package br.com.itep.dataBase;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,7 +27,7 @@ public class TestPersonDAO {
 		dataBase.insert(expected);
 		Person actual = dataBase.findByCPF(cpf);
 		assertNotNull(actual);
-		assertEqualsPerson(expected, actual);
+		assertTrue(this.assertEqualsPerson(expected, actual));
 	}
 
 	/**
@@ -68,7 +65,7 @@ public class TestPersonDAO {
 		dataBase.insert(expected);
 		Person actual = dataBase.findByCPF(cpf);
 		
-		assertEqualsPerson(expected, actual);
+		assertTrue(this.assertEqualsPerson(expected, actual));
 		
 		//delete person and check if it's still on database
 		dataBase.delete(cpf);
@@ -137,7 +134,7 @@ public class TestPersonDAO {
 		dataBase.insert(expected);
 		Person actual = dataBase.findByCPF(cpf);
 		assertNotNull(actual);
-		assertEqualsPerson(expected, actual);
+		assertTrue(this.assertEqualsPerson(expected, actual));
 	}
 	
 	@Test(expected = NonExistentException.class)
