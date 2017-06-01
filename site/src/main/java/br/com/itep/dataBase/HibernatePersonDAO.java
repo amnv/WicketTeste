@@ -2,7 +2,6 @@ package br.com.itep.dataBase;
 
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -33,8 +32,9 @@ public class HibernatePersonDAO implements IPersonDAO {
 		try {
 			session.beginTransaction();
 			session.save(person);
-			session.getTransaction();
+			session.getTransaction().commit();
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new AlreadyInsertedException();
 		}
 		finally {
@@ -54,15 +54,10 @@ public class HibernatePersonDAO implements IPersonDAO {
 			session.delete(p);
 			tx.commit();
 			
-		} catch (NonExistentException e1)
-		{
-			throw new NonExistentException();
 		}
-		catch (Exception e) {
-			if (!tx.wasCommitted())
-			{
+		catch (Exception e) {		
 				tx.rollback();
-			}
+				e.printStackTrace();
 		}
 		finally {
 			 session.flush(); 
@@ -74,7 +69,7 @@ public class HibernatePersonDAO implements IPersonDAO {
 	public List<Person> list() {
 		Session session = this.sessionFactory.openSession();
 		try {
-			return session.createQuery("from person").list(); 
+			return session.createQuery("FROM Person").list(); 
 		}
 		finally {
 			session.close();
@@ -97,7 +92,9 @@ public class HibernatePersonDAO implements IPersonDAO {
 	@Override
 	public void resetDatabase() {
 		List<Person> list = this.list();
+		
 		for (Person person : list) {
+			System.out.println(person.getName());
 			this.delete(person.getCpf());
 		}
 	}

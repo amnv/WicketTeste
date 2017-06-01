@@ -1,5 +1,6 @@
 package br.com.itep.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,18 +12,32 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PEOPLE_TABLE")
-public class Person {
-	private String name;
+public class Person implements Serializable {
+	@Id
 	private String cpf;
-	private String email;
-	private String password;
+	
+	@Column(name = "DATA_NASCIMENTO")
 	private Date date;
-
+	
+	@Column
+	private String name;
+	@Column
+	private String email;
+	@Column
+	private String password;
+	
+	
 	
 	public Person() {
 	}
-
-	@Id
+	
+	public Person(String name, String email, String password, Date date) {
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.date = date;
+	}
+	
 	public String getCpf() {
 		return cpf;
 	}
@@ -31,12 +46,7 @@ public class Person {
 		this.cpf = cpf;
 	}
 
-	public Person(String name, String email, String password, Date date) {
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.date = date;
-	}
+	
 
 	public String getName() {
 		return name;
@@ -62,7 +72,6 @@ public class Person {
 		this.password = password;
 	}
 
-	@Column(name = "DATA_NASCIMENTO")
 	public Date getDate() {
 		return date;
 	}

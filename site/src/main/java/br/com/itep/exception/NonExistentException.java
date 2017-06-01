@@ -1,5 +1,11 @@
 package br.com.itep.exception;
 
+/**
+ * Throws when the entity doesn't exist
+ * @author allyson.manoel
+ *
+ */
+
 public class NonExistentException extends RuntimeException {
 	
 	public NonExistentException() {

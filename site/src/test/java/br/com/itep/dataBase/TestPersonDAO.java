@@ -20,17 +20,18 @@ public class TestPersonDAO {
 	@Test
 	public void testInsert() {
 		IPersonDAO dataBase = HibernatePersonDAO.getInstance();
-	//	dataBase.resetDatabase();
+		dataBase.resetDatabase();
 		
 		Date d = new Date();
 		d.setTime((long) 123123);
 		String cpf = "123";
 		Person expected = new Person("allyson", "amnv@cin.ufpe.br", cpf, d);
+		expected.setCpf(cpf);
 		
 		dataBase.insert(expected);
 		Person actual = dataBase.findByCPF(cpf);
 		assertNotNull(actual);
-		assertEquals(expected, actual);
+		assertEqualsPerson(expected, actual);
 	}
 
 	/**
@@ -54,7 +55,7 @@ public class TestPersonDAO {
 		dataBase.insert(p2);
 	}
 	
-	@Test
+	@Test(expected = NonExistentException.class)
 	public void testDelete() {
 		IPersonDAO dataBase = HibernatePersonDAO.getInstance();
 		dataBase.resetDatabase();
@@ -63,25 +64,25 @@ public class TestPersonDAO {
 		d.setTime((long) 123123);
 		String cpf = "123";
 		Person expected = new Person("allyson", "amnv@cin.ufpe.br", cpf, d);
+		expected.setCpf(cpf);
 		
 		//insert person and check if it's not null and the right person
 		dataBase.insert(expected);
 		Person actual = dataBase.findByCPF(cpf);
-		assertNotNull(actual);
-		assertEquals(expected, actual);
+		
+		assertEqualsPerson(expected, actual);
 		
 		//delete person and check if it's still on database
 		dataBase.delete(cpf);
-		actual = dataBase.findByCPF(cpf);
-		assertNull(actual);	
+		dataBase.findByCPF(cpf);
 	}
 
-	@Test(expected = NonExistentException.class)
+	@Test(expected = NullPointerException.class)
 	public void testeDeleteInexistentPerson()
 	{
 		IPersonDAO dataBase = HibernatePersonDAO.getInstance();
 		dataBase.resetDatabase();
-		
+	
 		dataBase.delete("123");
 	}
 	
@@ -96,9 +97,13 @@ public class TestPersonDAO {
 		d.setTime((long) 123123);
 		Person p[] = new Person[4];
 		p[0] = new Person("arthur", "ajew@cin.ufpe.br", "321", d);
+		p[0].setCpf("321");
 		p[1] = new Person("allyson", "amnv@cin.ufpe.br", "123", d);
+		p[1].setCpf("123");
 		p[2]= new Person("eric", "eric@cin.ufpe.br", "456", d);
+		p[2].setCpf("456");
 		p[3] = new Person("vinicius", "vini@cin.ufpe.br", "789", d);
+		p[3].setCpf("789");
 		
 		//insert person and check if it's not null and the right person
 		for (int i = 0; i < p.length; i++) {
@@ -123,7 +128,7 @@ public class TestPersonDAO {
 		IPersonDAO dataBase = HibernatePersonDAO.getInstance();
 		dataBase.resetDatabase();
 		
-		assertNull(dataBase.list());
+		assertEquals(0, dataBase.list().size());
 	}
 	
 	@Test
@@ -131,27 +136,56 @@ public class TestPersonDAO {
 		//clean the database
 		IPersonDAO dataBase = HibernatePersonDAO.getInstance();
 		dataBase.resetDatabase();
-
 		Date d = new Date();
 		d.setTime((long) 123123);
 		String cpf = "123";
 		Person expected = new Person("allyson", "amnv@cin.ufpe.br", cpf, d);
-		
+		expected.setCpf(cpf);
 		dataBase.insert(expected);
 		Person actual = dataBase.findByCPF(cpf);
 		assertNotNull(actual);
-		assertEquals(expected, actual);
-
-		
+		assertEqualsPerson(expected, actual);
 	}
 	
 	@Test(expected = NonExistentException.class)
-	public void testfindByCPFInexistentPeson() {
+	public void testFindByCPFInexistentPeson() {
 		// clean the database
 		IPersonDAO dataBase = HibernatePersonDAO.getInstance();
 		dataBase.resetDatabase();
 		
 		dataBase.findByCPF("123");
 	}
-
+	
+	@Test
+	public void testResetDateBase() {
+		IPersonDAO database = HibernatePersonDAO.getInstance();
+		if(database.list().size() == 0)
+		{
+			Date d = new Date();
+			d.setTime((long) 123123);
+			Person p[] = new Person[4];
+			p[0] = new Person("arthur", "ajew@cin.ufpe.br", "321", d);
+			p[0].setCpf("321");
+			p[1] = new Person("allyson", "amnv@cin.ufpe.br", "123", d);
+			p[1].setCpf("123");
+			p[2]= new Person("eric", "eric@cin.ufpe.br", "456", d);
+			p[2].setCpf("456");
+			p[3] = new Person("vinicius", "vini@cin.ufpe.br", "789", d);
+			p[4].setCpf("789");		
+		}
+		
+		
+		database.resetDatabase();
+		assertEquals(0, database.list().size());
+	}
+	
+	
+	private boolean assertEqualsPerson(Person expected, Person actual)
+	{
+		return expected.getCpf().equals(actual.getCpf()) &&
+		expected.getEmail().equals(actual.getEmail()) &&
+		expected.getName().equals(actual.getName()) &&
+		expected.getPassword().equals(actual.getPassword()) &&
+		expected.getDate().equals(actual.getDate());
+	}
 }
