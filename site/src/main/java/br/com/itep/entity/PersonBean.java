@@ -5,13 +5,15 @@ import java.util.Date;
 public class PersonBean {
 	private String name;
 	private String email;
+	private String cpf;
 	private String password;
 	private String cPassword;
 	private Date date;
 
-	public PersonBean(String name, String email, String password, String cPassword, Date date) {
+	public PersonBean(String name, String email, String cpf, String password, String cPassword, Date date) {
 		this.name = name;
 		this.email = email;
+		this.cpf = cpf;
 		this.password = password;
 		this.cPassword = cPassword;
 		this.date = date;
@@ -31,6 +33,14 @@ public class PersonBean {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public String getPassword() {

@@ -25,8 +25,7 @@ public class TestPersonDAO {
 		Date d = new Date();
 		d.setTime((long) 123123);
 		String cpf = "123";
-		Person expected = new Person("allyson", "amnv@cin.ufpe.br", cpf, d);
-		expected.setCpf(cpf);
+		Person expected = new Person("allyson", "amnv@cin.ufpe.br", cpf, "123", d);
 		
 		dataBase.insert(expected);
 		Person actual = dataBase.findByCPF(cpf);
@@ -45,11 +44,11 @@ public class TestPersonDAO {
 		Date d = new Date();
 		d.setTime((long) 123123);
 		String cpf = "123";
-		Person p1 = new Person("allyson", "amnv@cin.ufpe.br", cpf, d);
+		Person p1 = new Person("allyson", "amnv@cin.ufpe.br", cpf, "123", d);
 		
 		Date d2 = new Date();
 		d.setTime((long) 123123);
-		Person p2 = new Person("outro", "asd@cin.ufpe.br", cpf, d);
+		Person p2 = new Person("outro", "asd@cin.ufpe.br", cpf, "123", d);
 		
 		dataBase.insert(p1);
 		dataBase.insert(p2);
@@ -63,8 +62,7 @@ public class TestPersonDAO {
 		Date d = new Date();
 		d.setTime((long) 123123);
 		String cpf = "123";
-		Person expected = new Person("allyson", "amnv@cin.ufpe.br", cpf, d);
-		expected.setCpf(cpf);
+		Person expected = new Person("allyson", "amnv@cin.ufpe.br", cpf, "123",d);
 		
 		//insert person and check if it's not null and the right person
 		dataBase.insert(expected);
@@ -96,14 +94,10 @@ public class TestPersonDAO {
 		Date d = new Date();
 		d.setTime((long) 123123);
 		Person p[] = new Person[4];
-		p[0] = new Person("arthur", "ajew@cin.ufpe.br", "321", d);
-		p[0].setCpf("321");
-		p[1] = new Person("allyson", "amnv@cin.ufpe.br", "123", d);
-		p[1].setCpf("123");
-		p[2]= new Person("eric", "eric@cin.ufpe.br", "456", d);
-		p[2].setCpf("456");
-		p[3] = new Person("vinicius", "vini@cin.ufpe.br", "789", d);
-		p[3].setCpf("789");
+		p[0] = new Person("arthur", "ajew@cin.ufpe.br", "321", "123", d);
+		p[1] = new Person("allyson", "amnv@cin.ufpe.br", "123", "123",d);
+		p[2]= new Person("eric", "eric@cin.ufpe.br", "456", "123",d);
+		p[3] = new Person("vinicius", "vini@cin.ufpe.br", "789", "123",d);
 		
 		//insert person and check if it's not null and the right person
 		for (int i = 0; i < p.length; i++) {
@@ -139,8 +133,7 @@ public class TestPersonDAO {
 		Date d = new Date();
 		d.setTime((long) 123123);
 		String cpf = "123";
-		Person expected = new Person("allyson", "amnv@cin.ufpe.br", cpf, d);
-		expected.setCpf(cpf);
+		Person expected = new Person("allyson", "amnv@cin.ufpe.br", cpf, "123", d);
 		dataBase.insert(expected);
 		Person actual = dataBase.findByCPF(cpf);
 		assertNotNull(actual);
@@ -164,14 +157,10 @@ public class TestPersonDAO {
 			Date d = new Date();
 			d.setTime((long) 123123);
 			Person p[] = new Person[4];
-			p[0] = new Person("arthur", "ajew@cin.ufpe.br", "321", d);
-			p[0].setCpf("321");
-			p[1] = new Person("allyson", "amnv@cin.ufpe.br", "123", d);
-			p[1].setCpf("123");
-			p[2]= new Person("eric", "eric@cin.ufpe.br", "456", d);
-			p[2].setCpf("456");
-			p[3] = new Person("vinicius", "vini@cin.ufpe.br", "789", d);
-			p[4].setCpf("789");		
+			p[0] = new Person("arthur", "ajew@cin.ufpe.br", "321", "1234", d);
+			p[1] = new Person("allyson", "amnv@cin.ufpe.br", "123", "123", d);
+			p[2]= new Person("eric", "eric@cin.ufpe.br", "456", "123", d);
+			p[3] = new Person("vinicius", "vini@cin.ufpe.br", "789", "123", d);
 		}
 		
 		
