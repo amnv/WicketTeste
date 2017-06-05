@@ -10,6 +10,9 @@ public class PersonBean {
 	private String cPassword;
 	private Date date;
 
+	
+	public PersonBean(){}
+	
 	public PersonBean(String name, String email, String cpf, String password, String cPassword, Date date) {
 		this.name = name;
 		this.email = email;

@@ -6,7 +6,6 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import br.com.itep.entity.Person;
 import br.com.itep.entity.PersonBean;
 import br.com.itep.exception.AlreadyInsertedException;
 import br.com.itep.exception.NonExistentException;

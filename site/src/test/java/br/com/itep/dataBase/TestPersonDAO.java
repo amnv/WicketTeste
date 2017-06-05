@@ -2,7 +2,6 @@ package br.com.itep.dataBase;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -43,7 +42,6 @@ public class TestPersonDAO {
 		String cpf = "123";
 		Person p1 = new Person("allyson", "amnv@cin.ufpe.br", cpf, "123", d);
 		
-		Date d2 = new Date();
 		d.setTime((long) 123123);
 		Person p2 = new Person("outro", "asd@cin.ufpe.br", cpf, "123", d);
 		
