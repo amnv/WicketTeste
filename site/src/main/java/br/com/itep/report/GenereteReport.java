@@ -1,4 +1,4 @@
-package br.itep.report;
+package br.com.itep.report;
 
 import java.io.OutputStream;
 import java.sql.Connection;

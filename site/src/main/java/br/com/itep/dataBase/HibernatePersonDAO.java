@@ -8,7 +8,6 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import br.com.itep.entity.Person;
-import br.com.itep.entity.Person2;
 import br.com.itep.exception.AlreadyInsertedException;
 import br.com.itep.exception.NonExistentException;
 
@@ -43,22 +42,6 @@ public class HibernatePersonDAO implements IPersonDAO {
 		}
 	}
 	
-	public void insert(Person2 person) {
-		Session session = sessionFactory.openSession();
-		try {
-			session.beginTransaction();
-			session.save(person);
-			session.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new AlreadyInsertedException();
-		}
-		finally {
-			session.close();
-		}
-	}
-	
-
 	@Override
 	public void delete(String cpf) {
 		Transaction tx = null;
