@@ -1,5 +1,7 @@
 package br.com.itep.dataBase;
-
+/**
+ * @author allyson.manoel
+ */
 import java.util.List;
 
 import org.hibernate.Session;

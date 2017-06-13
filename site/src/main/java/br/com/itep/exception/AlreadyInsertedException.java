@@ -1,5 +1,7 @@
 package br.com.itep.exception;
-
+/**
+ * @author allyson.manoel
+ */
 public class AlreadyInsertedException extends RuntimeException {
 	
 	public AlreadyInsertedException()

@@ -1,5 +1,7 @@
 package br.com.itep.entity;
-
+/**
+ * @author allyson.manoel
+ */
 import java.util.Date;
 
 public class PersonBean {

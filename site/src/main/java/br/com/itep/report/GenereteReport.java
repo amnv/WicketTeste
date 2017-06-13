@@ -1,5 +1,7 @@
 package br.com.itep.report;
-
+/**
+ * @author allyson.manoel
+ */
 import java.io.OutputStream;
 import java.sql.Connection;
 import java.util.HashMap;

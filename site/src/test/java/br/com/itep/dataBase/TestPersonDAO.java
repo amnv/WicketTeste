@@ -1,5 +1,7 @@
 package br.com.itep.dataBase;
-
+/**
+ * @author allyson.manoel
+ */
 import static org.junit.Assert.*;
 
 import java.util.Date;

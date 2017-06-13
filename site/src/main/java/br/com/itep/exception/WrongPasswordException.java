@@ -1,5 +1,7 @@
 package br.com.itep.exception;
-
+/**
+ * @author allyson.manoel
+ */
 public class WrongPasswordException extends RuntimeException {
 	public WrongPasswordException() {
 		super("Password don't match");
