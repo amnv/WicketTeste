@@ -1,8 +1,8 @@
 package br.com.itep.entity;
-import java.io.File;
 /**
  * @author allyson.manoel
  */
+import java.io.FileInputStream;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,8 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
-
-
 
 @Entity
 @Table(name = "PEOPLE_TABLE")
@@ -30,21 +28,19 @@ public class Person implements Serializable {
 	@Column
 	private String password;
 	@Column
-	private File image1;
-	@Lob
-	private File image2;
+	private byte[] image1;
+
 	
 	public Person() {
 	}
 	
-	public Person(String name, String email, String cpf, String password, Date date, File image1, File image2) {
+	public Person(String name, String email, String cpf, String password, Date date, byte[] image1) {
 		this.name = name;
 		this.email = email;
 		this.cpf = cpf;
 		this.password = password;
 		this.date = date;
 		this.image1 = image1;
-		this.image2 = image2;
 	}
 	
 	public Person(String name, String email, String cpf, String password, Date date) {
@@ -97,20 +93,11 @@ public class Person implements Serializable {
 		this.date = date;
 	}
 
-	public File getImage1() {
+	public byte[] getImage1() {
 		return image1;
 	}
 
-	public void setImage1(File image1) {
+	public void setImage1(byte[] image1) {
 		this.image1 = image1;
 	}
-
-	public File getImage2() {
-		return image2;
-	}
-
-	public void setImage2(File image2) {
-		this.image2 = image2;
-	}
-
 }
