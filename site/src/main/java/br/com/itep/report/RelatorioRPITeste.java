@@ -1,11 +1,3 @@
-/**
- * ITEP - UNIDADE DE GEOINFORMAÇÃO
- * 
- * Copyright (c) ITEP.
- * 
- * Este software é confidencial e propriedade do ITEP. Não é permitida sua distribuição ou divulgação 
- * do seu conteúdo sem expressa autorização do ITEP. Este arquivo contém informações proprietárias.
- */
 package br.com.itep.report;
 
 import java.io.ByteArrayOutputStream;
