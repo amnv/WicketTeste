@@ -17,7 +17,6 @@ import net.sf.jasperreports.engine.JasperRunManager;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 /**
- *
  * @author helaine.lins
  */
 public class RelatorioRPITeste {

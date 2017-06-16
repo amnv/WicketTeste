@@ -15,4 +15,5 @@ public interface IPersonDAO {
 	public Person findByCPF(String cpf);
 	public void resetDatabase();
 	public Session getSession();
+	public void disconect();
 }

@@ -105,4 +105,9 @@ public class HibernatePersonDAO implements IPersonDAO {
 	{
 		return this.sessionFactory.openSession();
 	}
+	
+	public void disconect()
+	{
+		this.sessionFactory.close();
+	}
 }

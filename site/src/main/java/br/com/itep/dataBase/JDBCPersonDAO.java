@@ -71,5 +71,14 @@ public class JDBCPersonDAO implements IPersonDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public void disconect()
+	{
+		try 
+		{
+			this.connection.close();
+		} catch (SQLException e) {}
+	}
 
 }
