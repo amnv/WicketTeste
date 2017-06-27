@@ -8,10 +8,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import org.apache.commons.collections4.map.HashedMap;
 
-import br.com.itep.entity.A;
+import br.com.itep.entity.Person;
 import net.sf.jasperreports.engine.JRException;
 
 public class Test {
@@ -38,20 +39,20 @@ public class Test {
 		//RelatorioRPITeste rpi = new RelatorioRPITeste();
 		//rpi.gerarRelatorioTeste();
 		
-		File f1 = new File("img1.jpg");
+		File f1 = new File("img/img1.jpg");
 		byte[] img1 = Files.readAllBytes(f1.toPath());
 		Date d = new Date();
 		d.setTime((long) 123123);
 		String cpf = "123";
-		A p1 = new A("allyson", "amnv@cin.ufpe.br");		
+		Person p1 = new Person("allyson", "amnv@cin.ufpe.br", cpf, "123", d, img1);
 		
 		Map<String, Object> parametros = new HashedMap<>();
-		List p = new ArrayList<>();
+		Vector<Person> p = new Vector<>();
 		p.add(p1);
-		DadosJrxml dados = new DadosJrxml("a.jrxml", parametros);
+		DadosJrxml dados = new DadosJrxml("JRXMLSources/NoBancReport.jrxml", parametros);
 		List<DadosJrxml> list = new ArrayList<>();
 		list.add(dados);
-		DadosRelatorio dadosRelatorio = new DadosRelatorio(list, new FileOutputStream("teste1.pdf"));
+		DadosRelatorio dadosRelatorio = new DadosRelatorio(list, new FileOutputStream("reports/teste1.pdf"));
 		GenereteReport g = new GenereteReport();
 		g.geraRelatorio(dadosRelatorio, p);
 		

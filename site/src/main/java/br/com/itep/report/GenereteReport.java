@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import br.com.itep.entity.Person;
 import net.sf.jasperreports.engine.JRException;
@@ -21,7 +22,6 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.export.JRPdfExporterParameter;
-import net.sf.jasperreports.engine.export.JRXlsExporter;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 public class GenereteReport {
@@ -102,15 +102,21 @@ public class GenereteReport {
 
 	}
 	
-	public void geraRelatorio(DadosRelatorio dadosRelatorio, List<Object> people) {
+	/**
+	 * Gerar relatotio sem conexao com banco de dados
+	 * @param dadosRelatorio
+	 * @param people
+	 */
+	public void geraRelatorio(DadosRelatorio dadosRelatorio, Vector<Person> people) {
 		try {
-            JRBeanCollectionDataSource jRBeanArrayDataSource = new JRBeanCollectionDataSource(people);
+            JRBeanCollectionDataSource jRBeanArrayDataSource = new JRBeanCollectionDataSource(PersonFactory.generateColection(people));
             
             //InputStream input = new FileInputStream(template);
             JasperDesign design = JRXmlLoader.load(dadosRelatorio.getDados().get(0).getFileName());
             JasperReport report = JasperCompileManager.compileReport(design);
 
-            JasperPrint print = JasperFillManager.fillReport(report, dadosRelatorio.getDados().get(0).getParametros(),  jRBeanArrayDataSource);
+            JasperPrint print = JasperFillManager.fillReport(report, dadosRelatorio.getDados().get(0).getParametros(),
+            		jRBeanArrayDataSource);
             
             
             JRExporter exporter = new JRPdfExporter();
