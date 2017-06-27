@@ -3,15 +3,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
-import br.com.itep.dataBase.HibernatePersonDAO;
-import br.com.itep.dataBase.JDBCPersonDAO;
-import br.com.itep.entity.Person;
+import org.apache.commons.collections4.map.HashedMap;
+
+import br.com.itep.entity.A;
 import net.sf.jasperreports.engine.JRException;
 
 public class Test {
@@ -35,16 +35,33 @@ public class Test {
 		i.insert(p2);
 		
 		*/
-		//RelatorioRPITeste rrpi = new RelatorioRPITeste();
-		//rrpi.gerarRelatorioTeste();
+		//RelatorioRPITeste rpi = new RelatorioRPITeste();
+		//rpi.gerarRelatorioTeste();
+		
+		File f1 = new File("img1.jpg");
+		byte[] img1 = Files.readAllBytes(f1.toPath());
+		Date d = new Date();
+		d.setTime((long) 123123);
+		String cpf = "123";
+		A p1 = new A("allyson", "amnv@cin.ufpe.br");		
+		
+		Map<String, Object> parametros = new HashedMap<>();
+		List p = new ArrayList<>();
+		p.add(p1);
+		DadosJrxml dados = new DadosJrxml("a.jrxml", parametros);
+		List<DadosJrxml> list = new ArrayList<>();
+		list.add(dados);
+		DadosRelatorio dadosRelatorio = new DadosRelatorio(list, new FileOutputStream("teste1.pdf"));
 		GenereteReport g = new GenereteReport();
-		Connection connection = JDBCPersonDAO.getInstance().getConnection();
+		g.geraRelatorio(dadosRelatorio, p);
+		
+		/*//Connection connection = JDBCPersonDAO.getInstance().getConnection();
 		//g.writeReport("Usuarios.jrxml", c, new FileOutputStream("saida.pdf"));
 		List<String> filesName = new ArrayList();
 		filesName.add("dadosPrincipais.jrxml");
 		filesName.add("Imagens.jrxml");
 		g.writeMutipageReport(filesName, connection, new FileOutputStream("multipageReport.pdf"));
-		
+		*/
 		//Person p = i.findByCPF("123");
 		//System.out.println(p.getImage1());		
 	}

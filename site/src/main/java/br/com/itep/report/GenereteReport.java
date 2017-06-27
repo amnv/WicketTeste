@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import br.com.itep.entity.Person;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRExporter;
 import net.sf.jasperreports.engine.JRExporterParameter;
@@ -16,9 +17,12 @@ import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.export.JRPdfExporterParameter;
-import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.engine.export.JRXlsExporter;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 public class GenereteReport {
 
@@ -69,5 +73,54 @@ public class GenereteReport {
 		exporter.setParameter(JRPdfExporterParameter.JASPER_PRINT_LIST, jpList); 
 		exporter.setParameter(JRPdfExporterParameter.OUTPUT_STREAM, saida); 
 		exporter.exportReport();
+	}
+	
+	public void geraRelatorio(DadosRelatorio dadosRelatorio) {
+		try 
+		{
+			List<JasperPrint> jpList = new ArrayList<JasperPrint>();
+			for (DadosJrxml file : dadosRelatorio.getDados())
+			{
+				// compila jrxml em memoria
+				JasperReport jasper = JasperCompileManager.compileReport(file.getFileName());
+	
+				// preenche relatorio
+				JasperPrint print = JasperFillManager.fillReport (jasper, file.getParametros());
+	
+				jpList.add(print);
+			}
+			
+			JRExporter exporter = new JRPdfExporter();
+			exporter.setParameter(JRPdfExporterParameter.JASPER_PRINT_LIST, jpList); 
+			exporter.setParameter(JRPdfExporterParameter.OUTPUT_STREAM, dadosRelatorio.getArquivoSaida()); 
+			exporter.exportReport();
+		}
+		catch (JRException e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void geraRelatorio(DadosRelatorio dadosRelatorio, List<Object> people) {
+		try {
+            JRBeanCollectionDataSource jRBeanArrayDataSource = new JRBeanCollectionDataSource(people);
+            
+            //InputStream input = new FileInputStream(template);
+            JasperDesign design = JRXmlLoader.load(dadosRelatorio.getDados().get(0).getFileName());
+            JasperReport report = JasperCompileManager.compileReport(design);
+
+            JasperPrint print = JasperFillManager.fillReport(report, dadosRelatorio.getDados().get(0).getParametros(),  jRBeanArrayDataSource);
+            
+            
+            JRExporter exporter = new JRPdfExporter();
+            exporter.setParameter(JRExporterParameter.JASPER_PRINT, print);
+			exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, dadosRelatorio.getArquivoSaida());
+			exporter.exportReport();
+			
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
 	}
 }
