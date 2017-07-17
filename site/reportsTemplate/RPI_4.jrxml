@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-06-27T14:10:16 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RPI_4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="291ef802-9955-490d-84a1-1a4636896fa6">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<variable name="counter" class="java.lang.Integer" incrementType="Column" calculation="Count">
+		<initialValueExpression><![CDATA[1]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="170" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="30" width="130" height="30" uuid="d7b1f3d7-2981-4002-baad-15bc1228c024"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lista de documentos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="77" width="550" height="39" uuid="6a61c419-4b8a-4891-96fb-da91de01f8a9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Para dar encaminhamento à solicitação, dirija-se à prefeitura lorem e tenha em mãos os documentos listados abaixo.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="140" width="550" height="30" uuid="cdad1660-1d10-4243-81c9-1d0654564389"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Documentos para Lorem ipsum (solicitação)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="120" y="10" width="291" height="31" uuid="a0338dcb-b530-4e51-87fd-e80cc67f9d11"/>
+				<text><![CDATA[lorem ipsum]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

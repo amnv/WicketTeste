@@ -10,9 +10,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 
-@Entity
+@MappedSuperclass
 @Table(name = "PEOPLE_TABLE")
 public class Person implements Serializable {
 	@Id

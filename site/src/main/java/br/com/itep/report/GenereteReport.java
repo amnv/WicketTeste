@@ -127,6 +127,5 @@ public class GenereteReport {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
 	}
 }

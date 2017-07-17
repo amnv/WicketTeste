@@ -17,8 +17,7 @@ import net.sf.jasperreports.engine.JRException;
 
 public class Test {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException, JRException {
-		/*
-		File f1 = new File("img1.jpg");
+		/*File f1 = new File("img1.jpg");
 		File f2 = new File("img2.jpg");
 		byte[] img1 = Files.readAllBytes(f1.toPath());
 		byte[] img2 = Files.readAllBytes(f2.toPath());
