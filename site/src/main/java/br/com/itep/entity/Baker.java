@@ -2,16 +2,22 @@ package br.com.itep.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.ManyToMany;
 
 @Entity
-public class Baker extends Person implements Serializable {
+public class Baker extends AbstractPerson {
 
 	@Column
 	private int quantidadeProdutosProduzidos;
+	@ManyToMany(
+			targetEntity = Product.class,
+			cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	private List<Product> product; 
 	
 	public Baker() {
 		
@@ -35,9 +41,10 @@ public class Baker extends Person implements Serializable {
 		this.quantidadeProdutosProduzidos = quantidadeProdutosProduzidos;
 	}
 
-	public void addQntProduto(int qntProduto)
+	public void  addProduct(Product product)
 	{
-		this.quantidadeProdutosProduzidos += qntProduto;
+		this.product.add(product);
+		this.quantidadeProdutosProduzidos += product.getAmountProduct();
 	}
 	
 }

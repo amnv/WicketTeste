@@ -1,104 +1,30 @@
 package br.com.itep.entity;
-/**
- * @author allyson.manoel
- */
-import java.io.FileInputStream;
+
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 
-@MappedSuperclass
-@Table(name = "PEOPLE_TABLE")
-public class Person implements Serializable {
-	@Id
-	private String cpf;
-	
-	@Column(name = "DATA_NASCIMENTO")
-	private Date date;
-	
-	@Column
-	private String name;
-	@Column
-	private String email;
-	@Column
-	private String password;
-	@Column
-	private byte[] image1;
+/**
+ * @author allyson.manoel
+ */
 
-	
+@Entity
+@Table(name = "PEOPLE")
+public class Person extends AbstractPerson implements Serializable {
+
 	public Person() {
 	}
 	
-	public Person(String name, String email, String cpf, String password, Date date, byte[] image1) {
-		this.name = name;
-		this.email = email;
-		this.cpf = cpf;
-		this.password = password;
-		this.date = date;
-		this.image1 = image1;
-	}
 	
 	public Person(String name, String email, String cpf, String password, Date date) {
-		this.name = name;
-		this.email = email;
-		this.cpf = cpf;
-		this.password = password;
-		this.date = date;
+		super(name, email, cpf, password, date);
 	}
 	
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
 	
-
-	public String getName() {
-		return name;
+	public Person(String name, String email, String cpf, String password, Date date, byte[] image1) {
+		super(name, email, cpf, password, date, image1);
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public byte[] getImage1() {
-		return image1;
-	}
-
-	public void setImage1(byte[] image1) {
-		this.image1 = image1;
-	}
 }

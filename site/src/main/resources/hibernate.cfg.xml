@@ -19,10 +19,15 @@
         <property name="show_sql">true</property>
  
         <!-- Drop and re-create all database on startup -->
-       <!-- <property name="hibernate.hbm2ddl.auto">create-drop</property>  --> 
+       <property name="hibernate.hbm2ddl.auto">create-drop</property> 
  
         <!-- Annotated entity classes -->
         <mapping class="br.com.itep.entity.Person"/>
+        <mapping class="br.com.itep.entity.CashDesk"/>
+        <mapping class="br.com.itep.entity.Baker"/>
+        <mapping class="br.com.itep.entity.Product"/>
+        <mapping class="br.com.itep.entity.Seller"/>
+        <mapping class="br.com.itep.entity.Buyer"/>
         
     </session-factory>
 </hibernate-configuration>

@@ -1,12 +1,28 @@
 package br.com.itep.entity;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
-public class Product {
+public class Product implements Serializable {
 
+	@Id
 	private int id;
+	
+	@Column
 	private int amountProduct;
+	
+	@ManyToMany(mappedBy = "product")
+	private List<Seller> seller;
+	
+	@ManyToMany(mappedBy = "product")
+	private List<Baker> bakers;
 	
 	public Product() {
 	}
@@ -42,5 +58,13 @@ public class Product {
 	public void reduceAmountProduct(int value)
 	{
 		if (value > 0) this.amountProduct -= value;
+	}
+
+	public List<Baker> getBakers() {
+		return bakers;
+	}
+
+	public void setBakers(List<Baker> bakers) {
+		this.bakers = bakers;
 	}
 }

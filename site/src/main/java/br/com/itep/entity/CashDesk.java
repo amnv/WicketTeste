@@ -1,12 +1,16 @@
 package br.com.itep.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
-public class CashDesk {
+public class CashDesk implements Serializable {
 
-	@Column
+	@Id
 	private int id;
 	
 	@Column
