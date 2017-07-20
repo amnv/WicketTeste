@@ -28,6 +28,7 @@
         <mapping class="br.com.itep.entity.Product"/>
         <mapping class="br.com.itep.entity.Seller"/>
         <mapping class="br.com.itep.entity.Buyer"/>
+        <mapping class="br.com.itep.entity.Sell"/>
         
     </session-factory>
 </hibernate-configuration>

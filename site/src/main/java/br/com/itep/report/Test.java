@@ -13,12 +13,13 @@ import java.util.Vector;
 import org.apache.commons.collections4.map.HashedMap;
 
 import br.com.itep.dataBase.HibernatePersonDAO;
+import br.com.itep.entity.CashDesk;
 import br.com.itep.entity.Person;
 import net.sf.jasperreports.engine.JRException;
 
 public class Test {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException, JRException {
-
+		
 		ArrayList<Integer> a =  new ArrayList<>();
 		a.add(10);
 		a.add(30);
@@ -26,9 +27,9 @@ public class Test {
 		a.add(34);
 		
 		HibernatePersonDAO h = HibernatePersonDAO.getInstance();
-		h.findByCPF("234");
 		int b = a.stream().reduce(0, (x, y) -> x + y);
 		System.out.println(b);
+		h.findByCPF("234");
 		/*File f1 = new File("img1.jpg");
 		File f2 = new File("img2.jpg");
 		byte[] img1 = Files.readAllBytes(f1.toPath());

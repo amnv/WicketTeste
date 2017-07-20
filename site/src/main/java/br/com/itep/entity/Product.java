@@ -18,12 +18,6 @@ public class Product implements Serializable {
 	@Column
 	private int amountProduct;
 	
-	@ManyToMany(mappedBy = "product")
-	private List<Seller> seller;
-	
-	@ManyToMany(mappedBy = "product")
-	private List<Baker> bakers;
-	
 	public Product() {
 	}
 
@@ -60,11 +54,4 @@ public class Product implements Serializable {
 		if (value > 0) this.amountProduct -= value;
 	}
 
-	public List<Baker> getBakers() {
-		return bakers;
-	}
-
-	public void setBakers(List<Baker> bakers) {
-		this.bakers = bakers;
-	}
 }

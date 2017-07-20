@@ -2,6 +2,7 @@ package br.com.itep.entity;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,28 +15,28 @@ public class Seller extends AbstractPerson {
 
 	@Column
 	private int qntSouldProduct;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private CashDesk cashDesk;
-	
-	
-	@ManyToMany(targetEntity = Product.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-	private List<Product> product;
+
+	//@ManyToMany(targetEntity = Product.class, cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+	//private List<Product> product;
 	
 	public Seller() {
-	
+
 	}
 
-	public Seller(String name, String email, String cpf, String password, Date date, byte[] image1, List<Product> product) {
+	public Seller(String name, String email, String cpf, String password, Date date, byte[] image1,
+			List<Product> product) {
 		super(name, email, cpf, password, date, image1);
 		this.qntSouldProduct = 0;
-		this.setProduct(product);
+		//this.setProduct(product);
 	}
 
 	public Seller(String name, String email, String cpf, String password, Date date, List<Product> product) {
 		super(name, email, cpf, password, date);
 		this.qntSouldProduct = 0;
-		this.setProduct(product);
+		//this.setProduct(product);
 	}
 
 	public int getQntSouldProduct() {
@@ -45,9 +46,8 @@ public class Seller extends AbstractPerson {
 	public void setQntSouldProduct(int qntSouldProduct) {
 		this.qntSouldProduct = qntSouldProduct;
 	}
-	
-	public void addQntSouldProduct(int value)
-	{
+
+	public void addQntSouldProduct(int value) {
 		this.qntSouldProduct += value;
 	}
 
@@ -57,13 +57,5 @@ public class Seller extends AbstractPerson {
 
 	public void setCashDesk(CashDesk cashDesk) {
 		this.cashDesk = cashDesk;
-	}
-
-	public List<Product> getProduct() {
-		return product;
-	}
-
-	public void setProduct(List<Product> product) {
-		this.product = product;
 	}
 }
