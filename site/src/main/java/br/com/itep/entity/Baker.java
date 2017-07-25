@@ -13,7 +13,7 @@ import javax.persistence.ManyToMany;
 public class Baker extends AbstractPerson {
 
 	@Column
-	private int quantidadeProdutosProduzidos;
+	private int madeProductAmount;
 	@ManyToMany(
 			targetEntity = Product.class,
 			cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -25,26 +25,26 @@ public class Baker extends AbstractPerson {
 
 	public Baker(String name, String email, String cpf, String password, Date date, byte[] image1) {
 		super(name, email, cpf, password, date, image1);
-		this.quantidadeProdutosProduzidos = 0;
+		this.madeProductAmount = 0;
 	}
 
 	public Baker(String name, String email, String cpf, String password, Date date) {
 		super(name, email, cpf, password, date);
-		this.quantidadeProdutosProduzidos = 0;
+		this.madeProductAmount = 0;
 	}
 
-	public int getQuantidadeProdutosProduzidos() {
-		return quantidadeProdutosProduzidos;
+	public int getMadeProductAmount() {
+		return madeProductAmount;
 	}
 
-	public void setQuantidadeProdutosProduzidos(int quantidadeProdutosProduzidos) {
-		this.quantidadeProdutosProduzidos = quantidadeProdutosProduzidos;
+	public void setMadeProductAmount(int quantidadeProdutosProduzidos) {
+		this.madeProductAmount = quantidadeProdutosProduzidos;
 	}
 
 	public void  addProduct(Product product)
 	{
 		this.product.add(product);
-		this.quantidadeProdutosProduzidos += product.getAmountProduct();
+		this.madeProductAmount += product.getAmountProduct();
 	}
 	
 }

@@ -8,18 +8,23 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 
 import br.com.itep.entity.Person;
 import br.com.itep.exception.AlreadyInsertedException;
 import br.com.itep.exception.NonExistentException;
 
 public class HibernatePersonDAO implements IPersonDAO {
-	private SessionFactory sessionFactory;
 	private static HibernatePersonDAO hibernatePersonDAO;
+	private static SessionFactory sessionFactory;
+	private static ServiceRegistry serviceRegistry;
 	
 	private HibernatePersonDAO() {
-		 this.sessionFactory = new Configuration().configure()
-					.buildSessionFactory();
+		Configuration configuration = new Configuration().configure();
+
+        serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
+        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 	}
 	
 	public static HibernatePersonDAO getInstance()
@@ -101,13 +106,15 @@ public class HibernatePersonDAO implements IPersonDAO {
 		}
 	}
 
+	@Override
+	public void disconect()
+	{
+		this.sessionFactory.close();
+	}
+	
 	public Session getSession()
 	{
 		return this.sessionFactory.openSession();
 	}
 	
-	public void disconect()
-	{
-		this.sessionFactory.close();
-	}
 }

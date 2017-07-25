@@ -1,53 +1,48 @@
 package br.com.itep.report;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Vector;
 
-import org.apache.commons.collections4.map.HashedMap;
-
-import br.com.itep.dataBase.HibernatePersonDAO;
-import br.com.itep.entity.CashDesk;
-import br.com.itep.entity.Person;
+import br.com.itep.dataBase.HibernateBakerDAO;
+import br.com.itep.entity.Baker;
 import net.sf.jasperreports.engine.JRException;
 
 public class Test {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException, JRException {
-		
+		/*		
 		ArrayList<Integer> a =  new ArrayList<>();
 		a.add(10);
 		a.add(30);
 		a.add(14);
 		a.add(34);
 		
-		HibernatePersonDAO h = HibernatePersonDAO.getInstance();
 		int b = a.stream().reduce(0, (x, y) -> x + y);
 		System.out.println(b);
-		h.findByCPF("234");
-		/*File f1 = new File("img1.jpg");
-		File f2 = new File("img2.jpg");
+		h.findByCPF("234");*/
+		HibernateBakerDAO h = HibernateBakerDAO.getInstance();
+		File f1 = new File("img/img1.jpg");
+		File f2 = new File("img/img2.jpg");
 		byte[] img1 = Files.readAllBytes(f1.toPath());
 		byte[] img2 = Files.readAllBytes(f2.toPath());
 		
 		Date d = new Date();
 		d.setTime((long) 123123);
 		String cpf = "123";
-		Person p1 = new Person("allyson", "amnv@cin.ufpe.br", cpf, "123", d, img1); 
-		Person p2 = new Person("carlos", "cas@cin.ufpe.br", "312", "123", d, img2);
+		Baker p1 = new Baker("allyson", "amnv@cin.ufpe.br", cpf, "123", d, img1); 
+		Baker p2 = new Baker("carlos", "cas@cin.ufpe.br", "312", "123", d, img2);
 		
-		HibernatePersonDAO i = HibernatePersonDAO.getInstance();
-		i.delete("123");
-		i.delete("312");
-		i.insert(p1);
-		i.insert(p2);
+		p1.setMadeProductAmount(10);
+		p2.setMadeProductAmount(2);
 		
-		*/
+		h.delete("123");
+		h.delete("312");
+		h.insert(p1);
+		h.insert(p2);
+		
+		h.listBakerProducerMoreThan(1).forEach(a -> System.out.println(a.getName()));
+		
 		//RelatorioRPITeste rpi = new RelatorioRPITeste();
 		//rpi.gerarRelatorioTeste();
 		/*

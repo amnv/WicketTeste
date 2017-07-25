@@ -65,12 +65,6 @@ public class JDBCPersonDAO implements IPersonDAO {
 		// TODO Auto-generated method stub
 
 	}
-
-	@Override
-	public Session getSession() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@Override
 	public void disconect()
