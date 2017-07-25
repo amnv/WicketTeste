@@ -16,9 +16,6 @@ public class Seller extends AbstractPerson {
 	@Column
 	private int qntSouldProduct;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private CashDesk cashDesk;
-
 	//@ManyToMany(targetEntity = Product.class, cascade = { CascadeType.MERGE, CascadeType.PERSIST })
 	//private List<Product> product;
 	
@@ -49,13 +46,5 @@ public class Seller extends AbstractPerson {
 
 	public void addQntSouldProduct(int value) {
 		this.qntSouldProduct += value;
-	}
-
-	public CashDesk getCashDesk() {
-		return cashDesk;
-	}
-
-	public void setCashDesk(CashDesk cashDesk) {
-		this.cashDesk = cashDesk;
 	}
 }

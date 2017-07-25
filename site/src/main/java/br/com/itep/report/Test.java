@@ -36,8 +36,8 @@ public class Test {
 		p1.setMadeProductAmount(10);
 		p2.setMadeProductAmount(2);
 		
-		h.delete("123");
-		h.delete("312");
+		//h.delete("123");
+		//h.delete("312");
 		h.insert(p1);
 		h.insert(p2);
 		

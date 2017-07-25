@@ -14,29 +14,18 @@ import javax.persistence.OneToOne;
 public class Sell implements Serializable 
 {
 	@EmbeddedId
-	private Chave_Ternario pk;
-	
-	@Column
-	private Date date;
+	private Sell_composed_key pk;
 	
 	public Sell() {
 		
 	}
 
-	public Chave_Ternario getPk() {
+	public Sell_composed_key getSell_composed_key() {
 		return pk;
 	}
 
-	public void setPk(Chave_Ternario pk) {
+	public void setSell_composed_key(Sell_composed_key pk) {
 		this.pk = pk;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
 	}
 
 }
