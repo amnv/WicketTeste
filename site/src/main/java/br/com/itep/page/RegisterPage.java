@@ -1,4 +1,4 @@
-package br.com.itep;
+package br.com.itep.page;
 
 /**
  * @author allyson.manoel
@@ -10,8 +10,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 public class RegisterPage extends GenericPage {
 
-	public RegisterPage(PageParameters p) {
-		super(p);
+	public RegisterPage() {
 		replace(new Label("cadastro", "Cadastro"));
 		replace(new Link("home")
 		{

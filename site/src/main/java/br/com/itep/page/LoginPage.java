@@ -1,4 +1,4 @@
-package br.com.itep;
+package br.com.itep.page;
 /**
  * @author allyson.manoel
  */
@@ -14,8 +14,7 @@ import br.com.itep.entity.PersonBean;
 public class LoginPage extends GenericPage {
 	private Component formLogin;
 	
-	public LoginPage(PageParameters p) {
-		super(p);
+	public LoginPage() {
 		replace(new Label("login", "Login"));
 		replace(new Link("home")
 		{
@@ -27,5 +26,5 @@ public class LoginPage extends GenericPage {
 		
 		replace(formLogin = new FormLogin(super.CONTENT));	
 	}
-
+	
 }

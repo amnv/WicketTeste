@@ -55,24 +55,24 @@ public class JDBCPersonDAO implements IPersonDAO {
 	}
 
 	@Override
-	public Person findByCPF(String cpf) {
+	public Person findById(String cpf) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public void resetDatabase() {
-		// TODO Auto-generated method stub
 
-	}
-	
-	@Override
 	public void disconect()
 	{
 		try 
 		{
 			this.connection.close();
 		} catch (SQLException e) {}
+	}
+
+	@Override
+	public void resetDatabase() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

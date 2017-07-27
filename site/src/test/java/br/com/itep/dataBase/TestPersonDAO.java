@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.itep.entity.Person;
 import br.com.itep.exception.AlreadyInsertedException;
@@ -15,9 +16,10 @@ import br.com.itep.exception.NonExistentException;
 
 public class TestPersonDAO {
 
+	@Autowired
+	IPersonDAO dataBase;
 	@Test
 	public void testInsert() {
-		IPersonDAO dataBase = HibernatePersonDAO.getInstance();
 		dataBase.resetDatabase();
 		
 		Date d = new Date();
@@ -26,7 +28,7 @@ public class TestPersonDAO {
 		Person expected = new Person("allyson", "amnv@cin.ufpe.br", cpf, "123", d);
 		
 		dataBase.insert(expected);
-		Person actual = dataBase.findByCPF(cpf);
+		Person actual = dataBase.findById(cpf);
 		assertNotNull(actual);
 		assertTrue(this.assertEqualsPerson(expected, actual));
 	}
@@ -36,7 +38,6 @@ public class TestPersonDAO {
 	 */
 	@Test(expected = AlreadyInsertedException.class)
 	public void testInsetDuplicatePerson() {
-		IPersonDAO dataBase = HibernatePersonDAO.getInstance();
 		dataBase.resetDatabase();
 		
 		Date d = new Date();
@@ -53,7 +54,6 @@ public class TestPersonDAO {
 	
 	@Test(expected = NonExistentException.class)
 	public void testDelete() {
-		IPersonDAO dataBase = HibernatePersonDAO.getInstance();
 		dataBase.resetDatabase();
 		
 		Date d = new Date();
@@ -63,19 +63,18 @@ public class TestPersonDAO {
 		
 		//insert person and check if it's not null and the right person
 		dataBase.insert(expected);
-		Person actual = dataBase.findByCPF(cpf);
+		Person actual = dataBase.findById(cpf);
 		
 		assertTrue(this.assertEqualsPerson(expected, actual));
 		
-		//delete person and check if it's still on database
+		//delete person and check if it's still on dataBase
 		dataBase.delete(cpf);
-		dataBase.findByCPF(cpf);
+		dataBase.findById(cpf);
 	}
 
 	@Test(expected = NullPointerException.class)
 	public void testeDeleteInexistentPerson()
 	{
-		IPersonDAO dataBase = HibernatePersonDAO.getInstance();
 		dataBase.resetDatabase();
 	
 		dataBase.delete("123");
@@ -84,7 +83,6 @@ public class TestPersonDAO {
 	@Test
 	public void testList() {
 		//limpar banco
-		IPersonDAO dataBase = HibernatePersonDAO.getInstance();
 		dataBase.resetDatabase();
 		
 		//entities to be inserted
@@ -116,40 +114,36 @@ public class TestPersonDAO {
 	public void testEmptyList()
 	{
 		//limpar banco
-		IPersonDAO dataBase = HibernatePersonDAO.getInstance();
 		dataBase.resetDatabase();
 		
 		assertEquals(0, dataBase.list().size());
 	}
 	
 	@Test
-	public void testFindByCPF() {
-		//clean the database
-		IPersonDAO dataBase = HibernatePersonDAO.getInstance();
+	public void testfindById() {
+		//clean the dataBase
 		dataBase.resetDatabase();
 		Date d = new Date();
 		d.setTime((long) 123123);
 		String cpf = "123";
 		Person expected = new Person("allyson", "amnv@cin.ufpe.br", cpf, "123", d);
 		dataBase.insert(expected);
-		Person actual = dataBase.findByCPF(cpf);
+		Person actual = dataBase.findById(cpf);
 		assertNotNull(actual);
 		assertTrue(this.assertEqualsPerson(expected, actual));
 	}
 	
 	@Test(expected = NonExistentException.class)
-	public void testFindByCPFInexistentPeson() {
-		// clean the database
-		IPersonDAO dataBase = HibernatePersonDAO.getInstance();
+	public void testfindByIdInexistentPeson() {
+		// clean the dataBase
 		dataBase.resetDatabase();
 		
-		dataBase.findByCPF("123");
+		dataBase.findById("123");
 	}
 	
 	@Test
 	public void testResetDateBase() {
-		IPersonDAO database = HibernatePersonDAO.getInstance();
-		if(database.list().size() == 0)
+		if(dataBase.list().size() == 0)
 		{
 			Date d = new Date();
 			d.setTime((long) 123123);
@@ -161,8 +155,8 @@ public class TestPersonDAO {
 		}
 		
 		
-		database.resetDatabase();
-		assertEquals(0, database.list().size());
+		dataBase.resetDatabase();
+		assertEquals(0, dataBase.list().size());
 	}
 	
 	

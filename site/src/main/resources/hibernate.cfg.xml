@@ -5,13 +5,12 @@
  
 <hibernate-configuration>
     <session-factory>
- 
         <!-- Connection settings -->
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+ 	
+   <!-- <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/wicket</property>
         <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">postgre</property>
- 
+        <property name="hibernate.connection.password">postgre</property>-->
         <!-- SQL dialect -->
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
  
@@ -19,7 +18,7 @@
         <property name="show_sql">true</property>
  
         <!-- Drop and re-create all database on startup -->
-     <!--    <property name="hibernate.hbm2ddl.auto">create-drop</property> --> 
+      <property name="hibernate.hbm2ddl.auto">create-drop</property>  
  
         <!-- Annotated entity classes -->
         <mapping class="br.com.itep.entity.Person"/>
@@ -29,6 +28,7 @@
         <mapping class="br.com.itep.entity.Seller"/>
         <mapping class="br.com.itep.entity.Buyer"/>
         <mapping class="br.com.itep.entity.Sell"/>
+        <mapping class="br.com.itep.entity.Produce"/>
         
     </session-factory>
 </hibernate-configuration>

@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.sql.SQLException;
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import br.com.itep.dataBase.HibernateBakerDAO;
 import br.com.itep.entity.Baker;
 import net.sf.jasperreports.engine.JRException;
@@ -21,7 +23,7 @@ public class Test {
 		int b = a.stream().reduce(0, (x, y) -> x + y);
 		System.out.println(b);
 		h.findByCPF("234");*/
-		HibernateBakerDAO h = HibernateBakerDAO.getInstance();
+		// = new HibernateBakerDAO();
 		File f1 = new File("img/img1.jpg");
 		File f2 = new File("img/img2.jpg");
 		byte[] img1 = Files.readAllBytes(f1.toPath());
@@ -38,11 +40,11 @@ public class Test {
 		
 		//h.delete("123");
 		//h.delete("312");
-		h.insert(p1);
+/*		h.insert(p1);
 		h.insert(p2);
 		
 		h.listBakerProducerMoreThan(1).forEach(a -> System.out.println(a.getName()));
-		
+	*/	
 		//RelatorioRPITeste rpi = new RelatorioRPITeste();
 		//rpi.gerarRelatorioTeste();
 		/*

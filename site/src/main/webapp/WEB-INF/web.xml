@@ -21,7 +21,7 @@
 		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
 		<init-param>
 			<param-name>applicationClassName</param-name>
-			<param-value>br.com.itep.WicketApplication</param-value>
+			<param-value>br.com.itep.page.WicketApplication</param-value>
 		</init-param>
 	</filter>
 
@@ -29,4 +29,10 @@
 		<filter-name>wicket.site</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<listener>
+		<listener-class>
+                     org.springframework.web.context.ContextLoaderListener
+                </listener-class>
+	</listener>
 </web-app>

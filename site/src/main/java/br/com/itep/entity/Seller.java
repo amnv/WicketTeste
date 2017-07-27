@@ -16,8 +16,6 @@ public class Seller extends AbstractPerson {
 	@Column
 	private int qntSouldProduct;
 
-	//@ManyToMany(targetEntity = Product.class, cascade = { CascadeType.MERGE, CascadeType.PERSIST })
-	//private List<Product> product;
 	
 	public Seller() {
 

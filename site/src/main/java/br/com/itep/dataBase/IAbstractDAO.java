@@ -8,7 +8,6 @@ public interface IAbstractDAO <T> {
 	public void insert(T t);
 	public void delete(String id);
 	public List<T> list();
-	public T findByCPF(String id);
+	public T findById(String id);
 	public void resetDatabase();
-	public void disconect();
 }

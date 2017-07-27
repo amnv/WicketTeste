@@ -1,4 +1,4 @@
-package br.com.itep;
+package br.com.itep.page;
 /**
  * @author allyson.manoel
  */

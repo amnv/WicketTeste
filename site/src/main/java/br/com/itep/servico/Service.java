@@ -5,6 +5,8 @@ package br.com.itep.servico;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import br.com.itep.dataBase.HibernatePersonDAO;
 import br.com.itep.dataBase.IPersonDAO;
 import br.com.itep.entity.Person;
@@ -12,11 +14,13 @@ import br.com.itep.entity.PersonBean;
 import br.com.itep.exception.WrongPasswordException;
 
 public class Service {
+	@Autowired
 	private IPersonDAO dataBase;
 	
 	public Service() {
-		this.dataBase = HibernatePersonDAO.getInstance();
+		
 	}
+	
 	public void insert(PersonBean p)
 	{
 		if (p.checkPassword())
@@ -44,7 +48,7 @@ public class Service {
 	
 	public PersonBean findByCPF(String cpf)
 	{
-		Person p = this.dataBase.findByCPF(cpf);
+		Person p = this.dataBase.findById(cpf);
 		return this.buildPersonBean(p);
 	}
 	
