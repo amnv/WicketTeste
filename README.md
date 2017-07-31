@@ -1,3 +1,3 @@
-Pequeno projeto de teste para consolidar aprendizado de ferramentas de desenvolvimento
+Pequeno projeto de teste para consolidar aprendizado de ferramentas de desenvolvimento, frameworks e padr√µes de projetos
 
-Consiste em um simples site MVC utilizando Hibernate para acesso ao banco, banco Postgres, camada aplicaÁ„o utilizando Wicket, geraÁ„o de relatÛrios pdf utilizando JasperReport e geraÁ„o de testes unit·rios utilizando JUnit. Coment·rios nas classes usando JavaDoc. UtilizaÁ„o de padrıes de projeto Singleton, DAO e outros. UtilizaÁ„o de Unchecked exceptions
+Consiste em um simples site MVC utilizando Hibernate para acesso ao banco, banco Postgres, camada aplica√ß√£o utilizando Wicket, gera√ß√£o de relat√≥rios pdf utilizando JasperReport, gera√ß√£o de testes unit√°rios utilizando JUnit e o framework Spring. Coment√°rios nas classes usando JavaDoc. Utiliza√ß√£o de padr√µes de diversos projeto como, por exemplo Singleton, DAO e utiliza√ß√£o de Unchecked exceptions.
