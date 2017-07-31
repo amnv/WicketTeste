@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class CashDesk implements Serializable {
@@ -15,6 +14,9 @@ public class CashDesk implements Serializable {
 	
 	@Column
 	private double cash;
+	
+	@Column
+	private boolean isAvailable;
 	
 	public CashDesk() {
 			
@@ -39,5 +41,13 @@ public class CashDesk implements Serializable {
 	public void addCash(double value)
 	{
 		this.cash += value;
+	}
+
+	public boolean isAvailable() {
+		return isAvailable;
+	}
+
+	public void setAvailable(boolean isAvailable) {
+		this.isAvailable = isAvailable;
 	}
 }

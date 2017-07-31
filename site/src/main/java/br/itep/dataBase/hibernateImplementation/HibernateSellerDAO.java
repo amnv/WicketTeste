@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.itep.dataBase.ISellerDAO;
-import br.itep.entity.CashDesk;
 import br.itep.entity.Seller;
 
 @Repository
@@ -19,6 +18,7 @@ public class HibernateSellerDAO extends HibernateAbstractDAO<Seller> implements 
 		super(factory);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly = true)
 	public List<Seller> list() {

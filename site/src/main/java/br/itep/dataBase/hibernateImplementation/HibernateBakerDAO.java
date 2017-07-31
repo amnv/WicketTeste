@@ -1,8 +1,8 @@
 package br.itep.dataBase.hibernateImplementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,6 +21,7 @@ public class HibernateBakerDAO extends HibernateAbstractDAO<Baker> implements IB
 		super(factory);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly = true)
 	public List<Baker> list()
@@ -45,6 +46,7 @@ public class HibernateBakerDAO extends HibernateAbstractDAO<Baker> implements IB
 		for (Baker baker : list) super.delete(baker.getCpf());
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly = true)
 	public List<Baker> listBakerProducedMoreThan(int qnt)
@@ -57,7 +59,7 @@ public class HibernateBakerDAO extends HibernateAbstractDAO<Baker> implements IB
 	@Transactional(readOnly = true)
 	public List<Product> listProductsAllMade() {
 		List<Baker> bakers = this.list();
-		List<Product> product = null;
+		List<Product> product = new ArrayList<>();
 	
 		for (Baker baker : bakers) product.addAll(baker.getProduct());
 		

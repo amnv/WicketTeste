@@ -20,12 +20,7 @@ public class Sell implements Serializable
 		
 	}
 
-	public Sell_composed_key getSell_composed_key() {
+	public Sell_composed_key getPK() {
 		return pk;
 	}
-
-	public void setSell_composed_key(Sell_composed_key pk) {
-		this.pk = pk;
-	}
-
 }

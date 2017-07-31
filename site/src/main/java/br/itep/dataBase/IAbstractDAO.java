@@ -2,8 +2,6 @@ package br.itep.dataBase;
 
 import java.util.List;
 
-import org.hibernate.Session;
-
 public interface IAbstractDAO<T> {
 	void insert(T t);
 	void delete(String id);

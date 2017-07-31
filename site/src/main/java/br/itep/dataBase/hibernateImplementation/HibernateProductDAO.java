@@ -18,6 +18,8 @@ public class HibernateProductDAO extends HibernateAbstractDAO<Product> implement
 		super(sessionFactory);
 	}
 
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly = true)
 	public List<Product> list() {

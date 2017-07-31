@@ -4,18 +4,12 @@ package br.itep.dataBase.hibernateImplementation;
  */
 import java.util.List;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.itep.dataBase.IPersonDAO;
 import br.itep.entity.Person;
-import br.itep.exception.AlreadyInsertedException;
 import br.itep.exception.NonExistentException;
 
 @Repository
@@ -24,7 +18,8 @@ public class HibernatePersonDAO extends HibernateAbstractDAO<Person> implements 
 	public HibernatePersonDAO(final SessionFactory factory) {
 		super(factory);
 	}
-	
+
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly = true)
 	public List<Person> list() {

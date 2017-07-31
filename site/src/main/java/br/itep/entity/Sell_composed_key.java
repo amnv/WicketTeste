@@ -8,6 +8,11 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.OneToOne;
 
+/**
+ * make an id with four PK and a date
+ * @author allyson.manoel
+ */
+
 @Embeddable
 public class Sell_composed_key implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL)

@@ -18,7 +18,7 @@ public class HibernateCashDeskDAO extends HibernateAbstractDAO<CashDesk> impleme
 		super(sessionFactory);
 	}
 
-
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly = true)
 	public List<CashDesk> list() {
