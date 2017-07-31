@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 public class CashDesk implements Serializable {
 
 	@Id
-	private int id;
+	private String id;
 	
 	@Column
 	private double cash;
@@ -20,11 +20,11 @@ public class CashDesk implements Serializable {
 			
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

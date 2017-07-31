@@ -7,38 +7,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.itep.dataBase.IBuyerDAO;
-import br.itep.entity.Buyer;
+import br.itep.dataBase.ICashDeskDAO;
+import br.itep.entity.CashDesk;
 
 @Repository
-public class HibernateBuyerDAO extends HibernateAbstractDAO<Buyer> implements IBuyerDAO {
+public class HibernateCashDeskDAO extends HibernateAbstractDAO<CashDesk> implements ICashDeskDAO {
 
 	@Autowired
-	public HibernateBuyerDAO(SessionFactory sessionFactory) {
+	public HibernateCashDeskDAO(SessionFactory sessionFactory) {
 		super(sessionFactory);
 	}
 
-	@SuppressWarnings("unchecked")
+
 	@Override
 	@Transactional(readOnly = true)
-	public List<Buyer> list() {
-		return super.getSession().createCriteria(Buyer.class).list();
+	public List<CashDesk> list() {
+		return super.getSession().createCriteria(CashDesk.class).list();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Buyer findById(String id) {
-		return (Buyer) super.getSession().get(Buyer.class, id);
+	public CashDesk findById(String id) {
+		return (CashDesk) super.getSession().get(CashDesk.class, id);
 	}
 
 	@Override
 	@Transactional
 	public void resetDatabase() {
-		List<Buyer> l = this.list();
+		List<CashDesk> l = this.list();
 		
-		for (Buyer buyer : l) super.delete(buyer.getCpf());
+		for (CashDesk cashDesk : l) super.delete(cashDesk.getId());
 	}
 
-	
 
 }
