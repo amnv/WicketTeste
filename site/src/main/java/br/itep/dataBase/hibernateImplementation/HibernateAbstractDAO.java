@@ -54,12 +54,20 @@ public abstract class HibernateAbstractDAO<T> implements IAbstractDAO<T> {
 	@Override
 	abstract public void resetDatabase();
 
+	@Transactional
 	public SessionFactory getSessionFactory() {
 		return this.sessionFactory;
 	}
 
+	@Transactional
 	public Session getSession()
 	{
 		return this.sessionFactory.getCurrentSession();
+	}
+	
+	@Transactional
+	public void update(T t)
+	{
+		this.getSession().update(t);
 	}
 }

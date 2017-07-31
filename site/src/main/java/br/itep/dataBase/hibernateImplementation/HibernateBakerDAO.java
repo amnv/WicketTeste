@@ -56,12 +56,12 @@ public class HibernateBakerDAO extends HibernateAbstractDAO<Baker> implements IB
 	@Override
 	@Transactional(readOnly = true)
 	public List<Product> listProductsAllMade() {
-		return null;
+		List<Baker> bakers = this.list();
+		List<Product> product = null;
+	
+		for (Baker baker : bakers) product.addAll(baker.getProduct());
+		
+		return product;
 	}
 
-	@Override
-	public void addProducts(List<Product> products) {
-		// TODO Auto-generated method stub
-		
-	}
 }

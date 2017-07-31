@@ -19,6 +19,7 @@ public class Baker extends AbstractPerson {
 			cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Product> product; 
 	
+	
 	public Baker() {
 		
 	}
@@ -39,6 +40,14 @@ public class Baker extends AbstractPerson {
 
 	public void setMadeProductAmount(int quantidadeProdutosProduzidos) {
 		this.madeProductAmount = quantidadeProdutosProduzidos;
+	}
+
+	public List<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Product> product) {
+		this.product = product;
 	}
 
 	public void  addProduct(Product product)

@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-public interface IAbstractDAO <T> {
-	public void insert(T t);
-	public void delete(String id);
-	public List<T> list();
-	public T findById(String id);
-	public void resetDatabase();
+public interface IAbstractDAO<T> {
+	void insert(T t);
+	void delete(String id);
+	List<T> list();
+	T findById(String id);
+	void resetDatabase();
+	void update(T t);
 }

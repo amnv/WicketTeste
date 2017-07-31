@@ -8,7 +8,5 @@ import br.itep.entity.Product;
 public interface IBakerDAO extends IAbstractDAO<Baker> {
 	List<Product> listProductsAllMade();
 
-	void addProducts(List<Product> products);
-
 	List<Baker> listBakerProducedMoreThan(int qnt);
 }

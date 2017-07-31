@@ -3,31 +3,38 @@ package br.itep.dataBase.hibernateImplementation;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.itep.dataBase.IProductDAO;
 import br.itep.entity.Product;
 
+@Repository
 public class HibernateProductDAO extends HibernateAbstractDAO<Product> implements IProductDAO {
 
+	@Autowired
 	public HibernateProductDAO(SessionFactory sessionFactory) {
 		super(sessionFactory);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Product> list() {
-		// must be overridden
-		return null;
+		return super.getSession().createCriteria(Product.class).list();
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Product findById(String id) {
-		// must be overridden
-		return null;
+		return (Product) super.getSession().get(Product.class, id); 
 	}
 
 	@Override
 	public void resetDatabase() {
-		// must be overridden
+		List<Product> p = this.list();
+		
+		for (Product product : p) this.delete(product.getId());
 	}
 
 }
