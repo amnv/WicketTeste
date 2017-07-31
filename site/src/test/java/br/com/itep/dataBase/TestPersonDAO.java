@@ -10,9 +10,10 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import br.com.itep.entity.Person;
-import br.com.itep.exception.AlreadyInsertedException;
-import br.com.itep.exception.NonExistentException;
+import br.itep.dataBase.IPersonDAO;
+import br.itep.entity.Person;
+import br.itep.exception.AlreadyInsertedException;
+import br.itep.exception.NonExistentException;
 
 public class TestPersonDAO {
 

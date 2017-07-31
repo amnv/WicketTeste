@@ -8,10 +8,11 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import br.com.itep.entity.PersonBean;
-import br.com.itep.exception.AlreadyInsertedException;
-import br.com.itep.exception.NonExistentException;
-import br.com.itep.exception.WrongPasswordException;
+import br.itep.entity.PersonBean;
+import br.itep.exception.AlreadyInsertedException;
+import br.itep.exception.NonExistentException;
+import br.itep.exception.WrongPasswordException;
+import br.itep.servico.Service;
 
 public class TestService {
 	
