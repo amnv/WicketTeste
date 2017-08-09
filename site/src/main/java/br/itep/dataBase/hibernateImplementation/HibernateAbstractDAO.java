@@ -17,14 +17,13 @@ import br.itep.dataBase.IAbstractDAO;
  * @author allyson.manoel
  * @param <T> type of Entity DAO related with database
  */
-
 @Repository
 public abstract class HibernateAbstractDAO<T> implements IAbstractDAO<T> {
-	private SessionFactory sessionFactory;
 	
 	@Autowired
-	public HibernateAbstractDAO(final SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
+	private SessionFactory sessionFactory;
+	
+	public HibernateAbstractDAO() {
 	}
 
 	@Override
@@ -64,5 +63,9 @@ public abstract class HibernateAbstractDAO<T> implements IAbstractDAO<T> {
 	public void update(T t)
 	{
 		this.getSession().update(t);
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 }

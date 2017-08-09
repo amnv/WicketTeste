@@ -13,11 +13,9 @@ import br.itep.entity.CashDesk;
 @Repository
 public class HibernateCashDeskDAO extends HibernateAbstractDAO<CashDesk> implements ICashDeskDAO {
 
-	@Autowired
-	public HibernateCashDeskDAO(SessionFactory sessionFactory) {
-		super(sessionFactory);
+	public HibernateCashDeskDAO() {
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly = true)

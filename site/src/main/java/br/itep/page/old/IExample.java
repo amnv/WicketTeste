@@ -1,4 +1,4 @@
-package br.itep.page;
+package br.itep.page.old;
 
 public interface IExample {
 	String printf();

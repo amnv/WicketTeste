@@ -13,6 +13,7 @@ import br.itep.entity.Person;
 import br.itep.entity.PersonBean;
 import br.itep.exception.WrongPasswordException;
 
+@org.springframework.stereotype.Service
 public class Service {
 	@Autowired
 	private IPersonDAO dataBase;

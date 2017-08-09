@@ -12,12 +12,8 @@ import br.itep.entity.Product;
 
 @Repository
 public class HibernateProductDAO extends HibernateAbstractDAO<Product> implements IProductDAO {
-
-	@Autowired
-	public HibernateProductDAO(SessionFactory sessionFactory) {
-		super(sessionFactory);
+	public HibernateProductDAO() {
 	}
-
 	
 	@SuppressWarnings("unchecked")
 	@Override

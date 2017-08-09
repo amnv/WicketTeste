@@ -4,8 +4,8 @@ import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.itep.page.HomePage;
 import br.itep.page.WicketApplication;
+import br.itep.page.old.HomePage;
 
 /**
  * Simple test using the WicketTester

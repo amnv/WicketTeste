@@ -1,34 +1,35 @@
 <?xml version='1.0' encoding='UTF-8'?>
+
 <!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
- 
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <!-- Connection settings -->
- 	
-   <!-- <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/wicket</property>
-        <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">postgre</property>-->
-        <!-- SQL dialect -->
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
- 
-        <!-- Print executed SQL to stdout -->
-        <property name="show_sql">true</property>
- 
-        <!-- Drop and re-create all database on startup -->
-      <property name="hibernate.hbm2ddl.auto">create-drop</property>  
- 
-        <!-- Annotated entity classes -->
-        <mapping class="br.com.itep.entity.Person"/>
-        <mapping class="br.com.itep.entity.CashDesk"/>
-        <mapping class="br.com.itep.entity.Baker"/>
-        <mapping class="br.com.itep.entity.Product"/>
-        <mapping class="br.com.itep.entity.Seller"/>
-        <mapping class="br.com.itep.entity.Buyer"/>
-        <mapping class="br.com.itep.entity.Sell"/>
-        <mapping class="br.com.itep.entity.Produce"/>
-        
-    </session-factory>
+	<session-factory>
+		<!-- Connection settings -->
+
+		<!-- <property name="hibernate.connection.driver_class">org.postgresql.Driver</property> 
+			<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/wicket</property> 
+			<property name="hibernate.connection.username">postgres</property> <property 
+			name="hibernate.connection.password">postgre</property> -->
+		<!-- SQL dialect -->
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect
+		</property>
+
+		<!-- Print executed SQL to stdout -->
+		<property name="show_sql">true</property>
+
+		<!-- Drop and re-create all database on startup -->
+		<property name="hibernate.hbm2ddl.auto">create-drop</property>
+
+		<!-- Annotated entity classes -->
+		<mapping class="br.itep.entity.Person" />
+		<mapping class="br.itep.entity.CashDesk" />
+		<mapping class="br.itep.entity.Baker" />
+		<mapping class="br.itep.entity.Product" />
+		<mapping class="br.itep.entity.Seller" />
+		<mapping class="br.itep.entity.Buyer" />
+		<mapping class="br.itep.entity.Sell" />
+		<mapping class="br.itep.entity.Produce" />
+
+	</session-factory>
 </hibernate-configuration>

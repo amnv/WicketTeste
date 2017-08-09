@@ -16,11 +16,8 @@ import br.itep.entity.Sell_composed_key;
 @Repository
 public class HibernateSellDAO extends HibernateAbstractDAO<Sell> implements ISellDAO {
 
-	@Autowired
-	public HibernateSellDAO(SessionFactory factory) {
-		super(factory);
+	public HibernateSellDAO() {
 	}
-
 	
 	@Override
 	@Transactional(readOnly = true)

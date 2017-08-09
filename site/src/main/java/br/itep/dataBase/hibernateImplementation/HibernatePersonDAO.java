@@ -14,9 +14,7 @@ import br.itep.exception.NonExistentException;
 
 @Repository
 public class HibernatePersonDAO extends HibernateAbstractDAO<Person> implements IPersonDAO {
-	
-	public HibernatePersonDAO(final SessionFactory factory) {
-		super(factory);
+	public HibernatePersonDAO() {
 	}
 
 	@SuppressWarnings("unchecked")

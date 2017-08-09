@@ -13,11 +13,9 @@ import br.itep.entity.Seller;
 @Repository
 public class HibernateSellerDAO extends HibernateAbstractDAO<Seller> implements ISellerDAO {
 
-	@Autowired
-	public HibernateSellerDAO(SessionFactory factory) {
-		super(factory);
+	public HibernateSellerDAO() {
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly = true)

@@ -3,8 +3,6 @@ package br.itep.dataBase.hibernateImplementation;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,10 +13,8 @@ import br.itep.exception.NonExistentException;
 
 @Repository
 public class HibernateBakerDAO extends HibernateAbstractDAO<Baker> implements IBakerDAO {
-	
-	@Autowired
-	public HibernateBakerDAO(final SessionFactory factory) {
-		super(factory);
+
+	public HibernateBakerDAO() {
 	}
 
 	@SuppressWarnings("unchecked")
